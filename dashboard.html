@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+    <style>
+        *{
+            margin: 0;
+        }
+    header{
+        position: relative;
+    }
+    .accmenu{
+        position: absolute;
+        top: 49px;
+        right: 27px;
+    }
+    .fedmenu{
+        position: absolute;
+        top: 49px;
+        right: 74px;
+    }
+    ul a{
+        text-decoration: none;
+        color: black;
+    }
+    .flex_container{
+        display: flex;
+        align-items: center;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+    }
+
+    .flex_container > div {
+        margin: 10px;
+        padding: 12px;
+    }
+    .text_area{
+        /* flex: 70%; */
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 500;
+        letter-spacing: .0125em;
+        background-color: transparent;
+        /* text-align: center; */
+    }
+    .balance_area{
+        /* flex: 30%; */
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 500;
+        letter-spacing: .0125em;
+        background-color: transparent;
+        /* text-align: center; */
+    }
+
+    .mdc-card__action-icons{
+        position: relative;
+    }
+    .bo_menu1, .bo_menu2, .bo_menu3, .bo_menu4{
+        position: absolute;
+        right:193px;
+        top: 35px;
+    }
+
+
+    </style>
+</head>
+<body>
+    <header class="mdc-top-app-bar mdc-elevation--z4">
+        <div class="mdc-top-app-bar__row">
+          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
+            <span class="mdc-top-app-bar__title">SURVEY</span>
+          </section>
+          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+            <button id="fedbtn" class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Feedback">feedback</button>
+            <div  class="mdc-menu-surface--anchor fedmenu">
+                <div id="fedmenu" class="mdc-menu mdc-menu-surface">
+                    <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+                            <li class="mdc-list-item" role="menuitem">
+                                <span class="mdc-list-item__ripple"></span>
+                                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
+                                <span class="mdc-list-item__text">
+                                    <span class="mdc-list-item__primary-text">
+                                        No message found
+                                    </span>
+                                    <span class="mdc-list-item__secondary-text">
+                                        00 00 0000</span>
+                                </span>
+                            </li>
+                      </ul>
+                </div>
+            </div>
+            <button id="accbar" class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Account">account_circle</button>
+            <div class="mdc-menu-surface--anchor accmenu">
+                <div id="accmenu" class="mdc-menu mdc-menu-surface">
+                    <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+                        <a href="/dashboard">
+                            <li class="mdc-list-item" role="menuitem">
+                                <span class="mdc-list-item__ripple"></span>
+                                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">dashboard</i>
+                                <span class="mdc-list-item__text">Dashboard</span>
+                            </li>
+                        </a>
+                        <a href="/changepass">
+                            <li class="mdc-list-item" role="menuitem">
+                                <span class="mdc-list-item__ripple"></span>
+                                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">lock</i>
+                                <span class="mdc-list-item__text">Change Password</span>
+                            </li>
+                        </a>
+
+                        <a href="/logout">
+                            <li class="mdc-list-item" role="menuitem">
+                                <span class="mdc-list-item__ripple"></span>
+                                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">exit_to_app</i>
+                                <span class="mdc-list-item__text">Logout</span>
+                            </li>
+                        </a>
+                      </ul>
+                </div>
+            </div>
+          </section>
+        </div>
+    </header>
+
+    <section id="drawer_section">
+        <aside class="mdc-drawer mdc-drawer--modal">
+            <div class="mdc-drawer__header">
+                <h3 class="mdc-drawer__title">SURVEY ADMIN</h3>
+                <h6 class="mdc-drawer__subtitle">spedfit.com</h6>
+            </div>
+            <div class="mdc-drawer__content">
+                <nav class="mdc-list">
+                    <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page" tabindex="0">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">dashboard</i>
+                    <span class="mdc-list-item__text">Dashboard</span>
+                    </a>
+                    <a class="mdc-list-item" href="#">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">settings_applications</i>
+                    <span class="mdc-list-item__text">Settings</span>
+                    </a>
+                    <hr class="mdc-list-divider">
+                    <h6 class="mdc-list-group__subheader">Website</h6>
+                    <a class="mdc-list-item" href="#">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">wysiwyg</i>
+                    <span class="mdc-list-item__text">Web Structure</span>
+                    </a>
+                    <a class="mdc-list-item" href="#">
+                        <span class="mdc-list-item__ripple"></span>
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">party_mode</i>
+                        <span class="mdc-list-item__text">Images</span>
+                    </a>
+                    <hr class="mdc-list-divider">
+                    <h6 class="mdc-list-group__subheader">Forms</h6>
+                    <a class="mdc-list-item " href="/fields">
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">article</i>
+                        <span class="mdc-list-item__text">Fields</span>
+                    </a>
+                    <a class="mdc-list-item " href="/forms">
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">fact_check</i>
+                        <span class="mdc-list-item__text">Forms</span>
+                    </a>
+                    <hr class="mdc-list-divider">
+                    <h6 class="mdc-list-group__subheader">Student</h6>
+                    <a class="mdc-list-item " href="/contacts/student">
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">how_to_reg</i>
+                        <span class="mdc-list-item__text">Student List</span>
+                    </a>
+
+                    <hr class="mdc-list-divider">
+                    <h6 class="mdc-list-group__subheader">Log</h6>
+                    <a class="mdc-list-item " href="/sresponse">
+                        <i class="material-icons material-icons-outlined mdc-list-item__graphic" aria-hidden="true">list_alt</i>
+                        <span class="mdc-list-item__text">Survey Response</span>
+                    </a>
+                    <a class="mdc-list-item " href="/activity">
+                        <i class="material-icons material-icons-outlined mdc-list-item__graphic" aria-hidden="true">pageview</i>
+                        <span class="mdc-list-item__text">Activity Log</span>
+                    </a>
+                    <a class="mdc-list-item " href="/lsession">
+                        <i class="material-icons material-icons-outlined mdc-list-item__graphic" aria-hidden="true">swap_vert</i>
+                        <span class="mdc-list-item__text">Login Session</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+            
+        <div id="drawer" class="mdc-drawer-scrim"></div>
+        <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
+            <main class="main-content" id="main-content">
+                &nbsp;
+            </main>
+        </div>
+    </section>
+
+    <section id="main">
+        <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell--span-3">
+                   <div class="mdc-card">  
+                        <div class="mdc-card__primary-action flex_container" tabindex="0">
+                            <div class="text_area">SYS</div>
+                            <div class="balance_area">1</div>
+                        </div>
+                      <div class="mdc-card__actions">
+                            <div class="mdc-card__action-buttons">
+                                <button class="mdc-button mdc-card__action mdc-card__action--button">
+                                <div class="mdc-button__ripple"></div>
+                                <span class="mdc-button__label">SYSTEM USER</span>
+                                </button>
+                            </div>
+                            <div class="mdc-card__action-icons">
+                                <button id="bo_btn1" class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="More options">more_vert</button>
+                                <div class="mdc-menu-surface--anchor bo_menu1">
+                                    <div id="bo_menu1" class="mdc-menu mdc-menu-surface">
+                                        <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+                                            <li class="mdc-list-item" role="menuitem">
+                                              <span class="mdc-list-item__ripple"></span>
+                                              <span class="mdc-list-item__text">A Menu Item</span>
+                                            </li>
+                                            <li class="mdc-list-item" role="menuitem">
+                                              <span class="mdc-list-item__ripple"></span>
+                                              <span class="mdc-list-item__text">Another Menu Item</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+
+                <div class="mdc-layout-grid__cell--span-3">
+                    <div class="mdc-card">  
+                        <div class="mdc-card__primary-action flex_container" tabindex="0">
+                            <div class="text_area">FORMS</div>
+                            <div class="balance_area">2</div>
+                        </div>
+                        <div class="mdc-card__actions">
+                            <div class="mdc-card__action-buttons">
+                                <button class="mdc-button mdc-card__action mdc-card__action--button">
+                                <div class="mdc-button__ripple"></div>
+                                <span class="mdc-button__label">AVAILABLE FOR SURVEY</span>
+                                </button>
+                            </div>
+                            <div class="mdc-card__action-icons">
+                                <button id="bo_btn2" class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="More options">more_vert</button>
+                                <div class="toolbar mdc-menu-surface--anchor bo_menu2">
+                                    <div id="bo_menu2" class="mdc-menu mdc-menu-surface">
+                                        <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+                                            <li class="mdc-list-item" role="menuitem">
+                                              <span class="mdc-list-item__ripple"></span>
+                                              <span class="mdc-list-item__text">A Menu Item</span>
+                                            </li>
+                                            <li class="mdc-list-item" role="menuitem">
+                                              <span class="mdc-list-item__ripple"></span>
+                                              <span class="mdc-list-item__text">Another Menu Item</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdc-layout-grid__cell--span-3">
+                    <div class="mdc-card">  
+                        <div class="mdc-card__primary-action flex_container" tabindex="0">
+                            <div class="text_area">STD</div>
+                            <div class="balance_area">7</div>
+                        </div>
+                        <div class="mdc-card__actions">
+                            <div class="mdc-card__action-buttons">
+                                <button class="mdc-button mdc-card__action mdc-card__action--button">
+                                <div class="mdc-button__ripple"></div>
+                                <span class="mdc-button__label">STUDENTS</span>
+                                </button>
+                            </div>
+                            <div class="mdc-card__action-icons">
+                                <button id="bo_btn3" class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="More options">more_vert</button>
+                                <div class="toolbar mdc-menu-surface--anchor bo_menu3">
+                                    <div id="bo_menu3" class="mdc-menu mdc-menu-surface">
+                                        <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+                                            <li class="mdc-list-item" role="menuitem">
+                                              <span class="mdc-list-item__ripple"></span>
+                                              <span class="mdc-list-item__text">A Menu Item</span>
+                                            </li>
+                                            <li class="mdc-list-item" role="menuitem">
+                                              <span class="mdc-list-item__ripple"></span>
+                                              <span class="mdc-list-item__text">Another Menu Item</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdc-layout-grid__cell--span-3">
+                    <div class="mdc-card">  
+                        <div class="mdc-card__primary-action flex_container" tabindex="0">
+                            <div class="text_area">RESP</div>
+                            <div class="balance_area">17</div>
+                        </div>
+                        <div class="mdc-card__actions">
+                            <div class="mdc-card__action-buttons">
+                                <button class="mdc-button mdc-card__action mdc-card__action--button">
+                                <div class="mdc-button__ripple"></div>
+                                <span class="mdc-button__label">SURVEY RESPONSE</span>
+                                </button>
+                            </div>
+                            <div class="mdc-card__action-icons">
+                                <button id="bo_btn4" class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon" title="More options">more_vert</button>
+                                <div class="toolbar mdc-menu-surface--anchor bo_menu4">
+                                    <div id="bo_menu4" class="mdc-menu mdc-menu-surface">
+                                        <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+                                            <li class="mdc-list-item" role="menuitem">
+                                              <span class="mdc-list-item__ripple"></span>
+                                              <span class="mdc-list-item__text">A Menu Item</span>
+                                            </li>
+                                            <li class="mdc-list-item" role="menuitem">
+                                              <span class="mdc-list-item__ripple"></span>
+                                              <span class="mdc-list-item__text">Another Menu Item</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+      
+
+
+    <script>
+        console.log(mdc);
+        const drawer =mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+        const topAppBar =mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('.mdc-top-app-bar'));
+        topAppBar.setScrollTarget(document.getElementById('drawer'));
+        topAppBar.listen('MDCTopAppBar:nav', () => {
+        drawer.open = !drawer.open;
+        });
+
+
+        const menu1 =mdc.menu.MDCMenu.attachTo(document.querySelector('#accmenu'));
+        const accbtn = document.querySelector('#accbar');
+        accbtn.addEventListener("click",()=>{
+            menu1.open = !menu1.open;
+        });
+
+        const menu2 =mdc.menu.MDCMenu.attachTo(document.querySelector('#fedmenu'));
+        const fedbtn = document.querySelector('#fedbtn');
+        fedbtn.addEventListener("click",()=>{
+            menu2.open = !menu2.open;
+        });
+
+        const bo_menu1 = mdc.menu.MDCMenu.attachTo(document.querySelector('#bo_menu1'));
+        const bo_btn1 = document.querySelector('#bo_btn1');
+        bo_btn1.addEventListener("click",()=>{
+            bo_menu1.open = !bo_menu1.open;
+        });
+
+        const bo_menu2 = mdc.menu.MDCMenu.attachTo(document.querySelector('#bo_menu2'));
+        const bo_btn2 = document.querySelector('#bo_btn2');
+        bo_btn2.addEventListener("click",()=>{
+            bo_menu2.open = !bo_menu2.open;
+        });
+
+        const bo_menu3 = mdc.menu.MDCMenu.attachTo(document.querySelector('#bo_menu3'));
+        const bo_btn3 = document.querySelector('#bo_btn3');
+        bo_btn3.addEventListener("click",()=>{
+            bo_menu3.open = !bo_menu3.open;
+        });
+
+        const bo_menu4 = mdc.menu.MDCMenu.attachTo(document.querySelector('#bo_menu4'));
+        const bo_btn4 = document.querySelector('#bo_btn4');
+        bo_btn4.addEventListener("click",()=>{
+            bo_menu4.open = !bo_menu4.open;
+        });
+
+    </script>
+</body>
+</html> 
