@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+    <style>
+        *{
+            margin: 0;
+        }
+    header{
+        position: relative;
+    }
+    .accmenu{
+        position: absolute;
+        top: 49px;
+        right: 27px;
+    }
+    .fedmenu{
+        position: absolute;
+        top: 49px;
+        right: 74px;
+    }
+    ul a{
+        text-decoration: none;
+        color: black;
+    }
+    .flex_container{
+        display: flex;
+        align-items: center;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+    }
+
+    .flex_container > div {
+        margin: 10px;
+        padding: 12px;
+    }
+    .text_area{
+        /* flex: 70%; */
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 500;
+        letter-spacing: .0125em;
+        background-color: transparent;
+        /* text-align: center; */
+    }
+    .balance_area{
+        /* flex: 30%; */
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 500;
+        letter-spacing: .0125em;
+        background-color: transparent;
+        /* text-align: center; */
+    }
+
+    .mdc-card__action-icons{
+        position: relative;
+    }
+    .bo_menu1, .bo_menu2, .bo_menu3, .bo_menu4{
+        position: absolute;
+        right:193px;
+        top: 35px;
+    }
+    .top_header{
+        display: flex;
+        justify-content: space-between;
+        font-family: "Roboto",sans-serif;
+        font-size: 18px;
+        align-items: center;
+        
+    }
+
+    .mdc-data-table{
+        margin:auto;
+        width: 100%;
+        overflow: auto;
+    }
+    .settings{
+        padding-left: 20px;
+    }
+
+    .mdc-data-table__header-cell,.mdc-data-table__cell{
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .mdc-data-table__header-cell--checkbox , .mdc-data-table__cell--checkbox{
+        padding-left: 25px;
+        padding-right: 0px;
+    }
+    .dialog_flex{
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        overflow: auto;
+    }
+
+    .field1{
+        margin: 25px 15px;
+    }
+    .field2{
+        margin-bottom: 25px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .field2 div{
+        padding-right: 10px;
+        padding-bottom: 7px;
+    }
+
+
+    </style>
+</head>
+<body>
+    <header class="mdc-top-app-bar mdc-elevation--z4">
+        <div class="mdc-top-app-bar__row">
+          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
+            <span class="mdc-top-app-bar__title">SURVEY</span>
+          </section>
+          <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+            <button id="fedbtn" class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Feedback">feedback</button>
+            <div  class="mdc-menu-surface--anchor fedmenu">
+                <div id="fedmenu" class="mdc-menu mdc-menu-surface">
+                    <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+                            <li class="mdc-list-item" role="menuitem">
+                                <span class="mdc-list-item__ripple"></span>
+                                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
+                                <span class="mdc-list-item__text">
+                                    <span class="mdc-list-item__primary-text">
+                                        No message found
+                                    </span>
+                                    <span class="mdc-list-item__secondary-text">
+                                        00 00 0000</span>
+                                </span>
+                            </li>
+                      </ul>
+                </div>
+            </div>
+            <button id="accbar" class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Account">account_circle</button>
+            <div class="mdc-menu-surface--anchor accmenu">
+                <div id="accmenu" class="mdc-menu mdc-menu-surface">
+                    <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+                        <a href="/dashboard">
+                            <li class="mdc-list-item" role="menuitem">
+                                <span class="mdc-list-item__ripple"></span>
+                                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">dashboard</i>
+                                <span class="mdc-list-item__text">Dashboard</span>
+                            </li>
+                        </a>
+                        <a href="/changepass">
+                            <li class="mdc-list-item" role="menuitem">
+                                <span class="mdc-list-item__ripple"></span>
+                                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">lock</i>
+                                <span class="mdc-list-item__text">Change Password</span>
+                            </li>
+                        </a>
+
+                        <a href="/logout">
+                            <li class="mdc-list-item" role="menuitem">
+                                <span class="mdc-list-item__ripple"></span>
+                                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">exit_to_app</i>
+                                <span class="mdc-list-item__text">Logout</span>
+                            </li>
+                        </a>
+                      </ul>
+                </div>
+            </div>
+          </section>
+        </div>
+    </header>
+
+    <section id="drawer_section">
+        <aside class="mdc-drawer mdc-drawer--modal">
+            <div class="mdc-drawer__header">
+                <h3 class="mdc-drawer__title">SURVEY ADMIN</h3>
+                <h6 class="mdc-drawer__subtitle">spedfit.com</h6>
+            </div>
+            <div class="mdc-drawer__content">
+                <nav class="mdc-list">
+                    <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page" tabindex="0">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">dashboard</i>
+                    <span class="mdc-list-item__text">Dashboard</span>
+                    </a>
+                    <a class="mdc-list-item" href="#">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">settings_applications</i>
+                    <span class="mdc-list-item__text">Settings</span>
+                    </a>
+                    <hr class="mdc-list-divider">
+                    <h6 class="mdc-list-group__subheader">Website</h6>
+                    <a class="mdc-list-item" href="#">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">wysiwyg</i>
+                    <span class="mdc-list-item__text">Web Structure</span>
+                    </a>
+                    <a class="mdc-list-item" href="#">
+                        <span class="mdc-list-item__ripple"></span>
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">party_mode</i>
+                        <span class="mdc-list-item__text">Images</span>
+                    </a>
+                    <hr class="mdc-list-divider">
+                    <h6 class="mdc-list-group__subheader">Forms</h6>
+                    <a class="mdc-list-item " href="/fields">
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">article</i>
+                        <span class="mdc-list-item__text">Fields</span>
+                    </a>
+                    <a class="mdc-list-item " href="/forms">
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">fact_check</i>
+                        <span class="mdc-list-item__text">Forms</span>
+                    </a>
+                    <hr class="mdc-list-divider">
+                    <h6 class="mdc-list-group__subheader">Student</h6>
+                    <a class="mdc-list-item " href="/contacts/student">
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">how_to_reg</i>
+                        <span class="mdc-list-item__text">Student List</span>
+                    </a>
+
+                    <hr class="mdc-list-divider">
+                    <h6 class="mdc-list-group__subheader">Log</h6>
+                    <a class="mdc-list-item " href="/sresponse">
+                        <i class="material-icons material-icons-outlined mdc-list-item__graphic" aria-hidden="true">list_alt</i>
+                        <span class="mdc-list-item__text">Survey Response</span>
+                    </a>
+                    <a class="mdc-list-item " href="/activity">
+                        <i class="material-icons material-icons-outlined mdc-list-item__graphic" aria-hidden="true">pageview</i>
+                        <span class="mdc-list-item__text">Activity Log</span>
+                    </a>
+                    <a class="mdc-list-item " href="/lsession">
+                        <i class="material-icons material-icons-outlined mdc-list-item__graphic" aria-hidden="true">swap_vert</i>
+                        <span class="mdc-list-item__text">Login Session</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+            
+        <div id="drawer" class="mdc-drawer-scrim"></div>
+        <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
+            <main class="main-content" id="main-content">
+                &nbsp;
+            </main>
+        </div>
+    </section>
+
+
+    <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell--span-1"></div>
+            <div class="mdc-layout-grid__cell--span-10">
+                <div class="mdc-data-table">
+                    <div class="top_header">
+                        <div class="settings">Settings</div>
+                        <div class="top_btn">
+                            <button class="mdc-icon-button material-icons">filter_list</button>
+                            <button id="add_btn" class="mdc-icon-button material-icons">add</button>
+                        </div>
+                    </div>
+                    <hr class="mdc-list-divider">
+                    <div class="mdc-data-table__table-container">
+                      <table id="data_table" class="mdc-data-table__table" aria-label="Dessert calories"> 
+                        <thead>
+                          <tr class="mdc-data-table__header-row">
+                            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--checkbox" role="columnheader" scope="col">
+                              <div class="mdc-checkbox mdc-data-table__header-row-checkbox mdc-checkbox--selected">
+                                <input type="checkbox" class="mdc-checkbox__native-control" aria-label="Toggle all rows"/>
+                                <div class="mdc-checkbox__background">
+                                  <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                  </svg>
+                                  <div class="mdc-checkbox__mixedmark"></div>
+                                </div>
+                                <div class="mdc-checkbox__ripple"></div>
+                              </div>
+                            </th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col"><b>Field Name</b></th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col"><b>Field Value</b></th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col"><b>Status</b></th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col"><b>Actions</b></th>
+                          </tr>
+                        </thead>
+                        <tbody class="mdc-data-table__content" id="parent_container">
+                            <tr data-row-id="u0" class="mdc-data-table__row">
+                                <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
+                                    <div class="mdc-checkbox mdc-data-table__row-checkbox">
+                                        <input type="checkbox" class="mdc-checkbox__native-control" aria-labelledby="u0"/>
+                                        <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                        </div>
+                                        <div class="mdc-checkbox__ripple"></div>
+                                    </div>
+                                </td>
+                                <th class="mdc-data-table__cell" scope="row" id="u0">survey_email_subject</th>
+                                <td class="mdc-data-table__cell">survey on {{.FormName}}</td>
+                                <td class="mdc-data-table__cell">Active</td>
+                                <td class="mdc-data-table__cell"><button data-id="settings::2" class="mdc-icon-button material-icons">create</button></td>
+                            </tr>
+            
+                            <tr data-row-id="u1" class="mdc-data-table__row">
+                                <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
+                                    <div class="mdc-checkbox mdc-data-table__row-checkbox">
+                                        <input type="checkbox" class="mdc-checkbox__native-control" aria-labelledby="u0"/>
+                                        <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                        </div>
+                                        <div class="mdc-checkbox__ripple"></div>
+                                    </div>
+                                </td>
+                                <th class="mdc-data-table__cell" scope="row" id="u0">survey_email_body</th>
+                                <td class="mdc-data-table__cell">In order to address disputes when the seeds are planted I propose the following</td>
+                                <td class="mdc-data-table__cell">Active</td>
+                                <td class="mdc-data-table__cell"><button data-id="settings::2" class="mdc-icon-button material-icons">create</button></td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+            </div>
+            <div class="mdc-layout-grid__cell--span-1"></div>
+        </div>
+    </div>
+
+
+    <div class="mdc-dialog">
+        <div class="mdc-dialog__container">
+          <div class="mdc-dialog__surface"
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="my-dialog-title"
+            aria-describedby="my-dialog-content">
+            <div class="mdc-dialog__content dialog_flex" id="my-dialog-content">
+                <h3><b>Settings Info</b></h3>
+                <div class="mdc-text-field mdc-text-field--filled field1">
+                    <span class="mdc-text-field__ripple"></span>
+                    <span class="mdc-floating-label" id="my-label-id">Field Name</span>
+                    <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="fieldName">
+                    <span class="mdc-line-ripple"></span>
+                </div>
+
+                
+                <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea field2">
+                    <span class="mdc-notched-outline">
+                      <span class="mdc-notched-outline__leading"></span>
+                      <span class="mdc-notched-outline__notch">
+                        <span class="mdc-floating-label" id="my-label-id">Field Value</span>
+                      </span>
+                      <span class="mdc-notched-outline__trailing"></span>
+                    </span>
+                    
+                    <span class="mdc-text-field__resizer">
+                      <textarea id="fieldValue" class="mdc-text-field__input" rows="8" cols="40" maxlength="600"></textarea>
+                      <div class="mdc-text-field-character-counter">0 / 600</div>
+                    </span>
+                    <span class="mdc-line-ripple"></span>
+                </div>
+
+                <div class="mdc-form-field">
+                    <div class="mdc-checkbox">
+                        <input type="checkbox" class="mdc-checkbox__native-control" name="status" id="status" value="Active"/>
+                        <div class="mdc-checkbox__background">
+                            <svg class="mdc-checkbox__checkmark"
+                                viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none"
+                                 d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                            </svg>
+                            <div class="mdc-checkbox__mixedmark"></div>
+                        </div>
+                        <div class="mdc-checkbox__ripple"></div>
+                    </div>
+                    <label for="my_checkbox">Active</label>
+                </div>
+
+            </div>
+            <div class="mdc-dialog__actions">
+              <button id="close_btn" type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">CLOSE</span>
+              </button>
+              <button   id="save_btn" type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="discard">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">SAVE</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="mdc-dialog__scrim"></div>
+      </div>
+
+
+
+      
+
+
+
+
+
+
+
+      
+
+
+<script src="main.js"></script>
+</body>
+</html> 
