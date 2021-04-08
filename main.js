@@ -27,24 +27,37 @@ console.log(mdc);
         });
 
         const dialog = mdc.dialog.MDCDialog.attachTo(document.querySelector('.mdc-dialog'));
+
+
+         // CURD operation
+
         const add_btn = document.querySelector('#add_btn');
         add_btn.addEventListener("click", ()=>{
             dialog.open();
             dialog.scrimClickAction="";
             dialog.autoStackButtons = false;
-          
+            resetForm();
+            if (save_btn.style.display != "block") {
+                save_btn.style.display = "block";
+            }
+            
+            var change_btn = document.querySelector('#change_btn');
+            if (change_btn.style.display != "none") {
+                change_btn.style.display = "none";
+            }
+        
         });
 
-        // const checkbox = mdc.checkbox.MDCCheckbox.attachTo(document.querySelector('.mdc-checkbox'));
-        // const formField = mdc.formField.MDCFormField.attachTo(document.querySelector('.mdc-form-field'));
-        // formField.input = checkbox;
+        function resetForm() {
+            document.getElementById("fieldName").value = "";
+            document.getElementById("fieldValue").value = "";
+            document.getElementById("status").checked = false;
+        }
 
-        
-        // CURD operation
+
         const save_btn = document.querySelector('#save_btn');
         save_btn.addEventListener("click",()=>{
             var formData = readFormData();
-            console.log(formData);
             insertNewRecord(formData);
             resetForm();
         });
@@ -54,7 +67,7 @@ console.log(mdc);
             var formData = {};
             formData["fieldName"] = document.getElementById("fieldName").value;
             formData["fieldValue"] = document.getElementById("fieldValue").value;
-            formData["status"] = checkCheckbox()
+            formData["status"] = checkCheckbox();
             return formData;
         }
 
@@ -68,13 +81,6 @@ console.log(mdc);
             return ""
         }
         }  
-
-        function resetForm() {
-            document.getElementById("fieldName").value = "";
-            document.getElementById("fieldValue").value = "";
-            document.getElementById("status").checked = false;
-        }
-
 
     var counter = 0;
     var parentContainer = document.getElementById("parent_container");
@@ -118,10 +124,30 @@ console.log(mdc);
         else{
             document.getElementById("status").checked = false;
         }
+        var save = document.querySelector('#save_btn');
+        if (save.style.display != "none") {
+            save.style.display = "none";
+        }
         
+        var change_btn = document.querySelector('#change_btn');
+        if (change_btn.style.display != "block") {
+            change_btn.style.display = "block";
+        }
+
+        change_btn.addEventListener("click",()=>{
+            var updatedformData = readFormData();
+           // console.log(formData);
+            updateFormData(updatedformData);
+            //resetForm();
+        });
         
     }
 
+    function updateFormData(formData) {
+        selectedRow.cells[1].innerText = formData.fieldName;
+        selectedRow.cells[2].innerText = formData.fieldValue;
+        selectedRow.cells[3].innerText = checkCheckbox();
+    }
 
-    // edit korte jaia save dile noton kore data table toiri hoi .. eta logic er maddome khoje ber kore solve kora lagbe and dialog er bitor ta change korte hove jeno display soto korleo sob gola field access kora jai. 
+
 

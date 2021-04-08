@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>settings</title>
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto&display=swap" rel="stylesheet">
@@ -95,26 +95,20 @@
         padding-left: 25px;
         padding-right: 0px;
     }
-    .dialog_flex{
-        display: flex;
-        flex-direction: column;
-        justify-content:center;
-        overflow: auto;
-    }
 
-    .field1{
-        margin: 25px 15px;
-    }
-    .field2{
-        margin-bottom: 25px;
-        margin-left: 15px;
-        margin-right: 15px;
-    }
     .field2 div{
         padding-right: 10px;
         padding-bottom: 7px;
+    } 
+
+    .mdc-text-field{
+        width:100%; 
     }
 
+    .formTable td { 
+        border:0px solid black; 
+        padding:10px     
+    }
 
     </style>
 </head>
@@ -341,48 +335,61 @@
             aria-modal="true"
             aria-labelledby="my-dialog-title"
             aria-describedby="my-dialog-content">
+            <h2 class="mdc-dialog__title" id="my-dialog-title">Settings Info</h2>
             <div class="mdc-dialog__content dialog_flex" id="my-dialog-content">
-                <h3><b>Settings Info</b></h3>
-                <div class="mdc-text-field mdc-text-field--filled field1">
-                    <span class="mdc-text-field__ripple"></span>
-                    <span class="mdc-floating-label" id="my-label-id">Field Name</span>
-                    <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="fieldName">
-                    <span class="mdc-line-ripple"></span>
-                </div>
+                <table class="formTable">
+                    <tr>
+                        <td>
+                            <div class="mdc-text-field mdc-text-field--filled field1">
+                                <span class="mdc-text-field__ripple"></span>
+                                <span class="mdc-floating-label" id="my-label-id">Field Name</span>
+                                <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" id="fieldName">
+                                <span class="mdc-line-ripple"></span>
+                            </div>
+                        </td>
+                    </tr>
 
+                    <tr>
+                        <td>
+                            <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea field2">
+                                <span class="mdc-notched-outline">
+                                  <span class="mdc-notched-outline__leading"></span>
+                                  <span class="mdc-notched-outline__notch">
+                                    <span class="mdc-floating-label" id="my-label-id">Field Value</span>
+                                  </span>
+                                  <span class="mdc-notched-outline__trailing"></span>
+                                </span>
+                                
+                                <span class="mdc-text-field__resizer">
+                                  <textarea id="fieldValue" class="mdc-text-field__input" rows="8" cols="40" maxlength="600"></textarea>
+                                  <div class="mdc-text-field-character-counter">0 / 600</div>
+                                </span>
+                                <span class="mdc-line-ripple"></span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="mdc-form-field">
+                                <div class="mdc-checkbox">
+                                    <input type="checkbox" class="mdc-checkbox__native-control" name="status" id="status" value="Active"/>
+                                    <div class="mdc-checkbox__background">
+                                        <svg class="mdc-checkbox__checkmark"
+                                            viewBox="0 0 24 24">
+                                        <path class="mdc-checkbox__checkmark-path" fill="none"
+                                             d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                        </svg>
+                                        <div class="mdc-checkbox__mixedmark"></div>
+                                    </div>
+                                    <div class="mdc-checkbox__ripple"></div>
+                                </div>
+                                <label for="my_checkbox">Active</label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
                 
-                <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea field2">
-                    <span class="mdc-notched-outline">
-                      <span class="mdc-notched-outline__leading"></span>
-                      <span class="mdc-notched-outline__notch">
-                        <span class="mdc-floating-label" id="my-label-id">Field Value</span>
-                      </span>
-                      <span class="mdc-notched-outline__trailing"></span>
-                    </span>
-                    
-                    <span class="mdc-text-field__resizer">
-                      <textarea id="fieldValue" class="mdc-text-field__input" rows="8" cols="40" maxlength="600"></textarea>
-                      <div class="mdc-text-field-character-counter">0 / 600</div>
-                    </span>
-                    <span class="mdc-line-ripple"></span>
-                </div>
-
-                <div class="mdc-form-field">
-                    <div class="mdc-checkbox">
-                        <input type="checkbox" class="mdc-checkbox__native-control" name="status" id="status" value="Active"/>
-                        <div class="mdc-checkbox__background">
-                            <svg class="mdc-checkbox__checkmark"
-                                viewBox="0 0 24 24">
-                            <path class="mdc-checkbox__checkmark-path" fill="none"
-                                 d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                            </svg>
-                            <div class="mdc-checkbox__mixedmark"></div>
-                        </div>
-                        <div class="mdc-checkbox__ripple"></div>
-                    </div>
-                    <label for="my_checkbox">Active</label>
-                </div>
-
             </div>
             <div class="mdc-dialog__actions">
               <button id="close_btn" type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
@@ -393,23 +400,16 @@
                 <div class="mdc-button__ripple"></div>
                 <span class="mdc-button__label">SAVE</span>
               </button>
+              <button style="display: none;" id="change_btn" type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="discard">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">SAVE CHANGES</span>
+              </button>
             </div>
           </div>
         </div>
         <div class="mdc-dialog__scrim"></div>
       </div>
 
-
-
-      
-
-
-
-
-
-
-
-      
 
 
 <script src="main.js"></script>
