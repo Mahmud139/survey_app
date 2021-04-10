@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+    <style>
+        .mdc-card{
+            height: 415px;
+            width: 400px;
+            margin: 100px auto;
+        }
+        h3{
+            font-size: 25px;
+            text-align: center;
+            margin-top: 35px;
+        }
+        td div{
+            width:320px;
+            margin: 10px 37px; 
+        }
+        /* table{
+            margin: 20px;
+        } */
+        body{
+            font-family: "Roboto",sans-serif;
+        }
+        .flex_container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 25px 37px;
+        }
+        a{
+            text-decoration: none;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="mdc-card mdc-elevation--z4">
+        <!-- ... content ... -->
+        <h3>Login to your account</h3>
+        <table>
+            <tr>
+                <td>
+                    <div class="mdc-text-field mdc-text-field--filled">
+                        <span class="mdc-text-field__ripple"></span>
+                        <span class="mdc-floating-label" id="my-label-id">User Name</span>
+                        <input class="mdc-text-field__input" type="password" aria-labelledby="my-label-id" required>
+                        <span class="mdc-line-ripple"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="mdc-text-field mdc-text-field--filled">
+                        <span class="mdc-text-field__ripple"></span>
+                        <span class="mdc-floating-label" id="my-label-id">Password</span>
+                        <input class="mdc-text-field__input" type="password" aria-labelledby="my-label-id" required minlength="8">
+                        <span class="mdc-line-ripple"></span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="flex_container">
+                <td>
+                    <a href="#"><button class="mdc-button">  <span class="mdc-button__ripple"></span> FORGOT PASSWORD?</button></a>
+                    
+                </td>
+                <td>
+                    <a href="#"><button class="mdc-button mdc-button--raised">  <span class="mdc-button__ripple"></span>LOGIN</button></a>
+                    
+                </td>
+                
+            </tr>
+        </table>
+      </div>
+
+    <script>
+        console.log(mdc);
+        const textFieldElements = [].slice.call(document.querySelectorAll('.mdc-text-field'));
+        textFieldElements.forEach((textFieldEl) => {
+            mdc.textField.MDCTextField.attachTo(textFieldEl); 
+        });
+        
+    </script>
+</body>
+</html>
