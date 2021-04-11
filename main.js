@@ -106,6 +106,7 @@ console.log(mdc);
     </tr>`
 
     parentContainer.insertAdjacentHTML('beforeend',html);
+    counter++;
 
     }
 
